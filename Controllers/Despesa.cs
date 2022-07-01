@@ -10,13 +10,13 @@ namespace Controllers
         public static Despesa InserirDespesa(
             int ReservaId,
             int ProdutoId,
-            string 
+            string Qnt_Consumida
         )
         {
             return new Despesa(ReservaId, ProdutoId);
         }
 
-        public static Despesa ExcluirDespesa(
+        public static Despesa RemoverDespesa(
             int Id
         )
         {
