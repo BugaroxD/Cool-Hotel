@@ -5,11 +5,12 @@ using Models;
 
 namespace Controllers
 {
-    public class DespesasController
+    public class DespesaController
     {
         public static Despesa InserirDespesa(
             int ReservaId,
-            int ProdutoId
+            int ProdutoId,
+            string 
         )
         {
             return new Despesa(ReservaId, ProdutoId);
@@ -48,9 +49,9 @@ namespace Controllers
         )
         {
             Despesa Despesa = (
-                from despesas in Despesa.GetDespesas()
-                    where despesas.Id == Id
-                    select despesas
+                from despesa in Despesa.GetDespesas()
+                    where despesa.Id == Id
+                    select despesa
             ).First();
 
             if(Despesa == null)
