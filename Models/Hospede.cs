@@ -10,6 +10,7 @@ namespace Models
 
         public int Id { get; set; }
         public string Nome { get; set; }
+        public string NomeMae { get; set; }
         public string DataNascimento { get; set; }
         public string Cpf { get; set; }
         public string Senha { get; set; }
@@ -22,6 +23,7 @@ namespace Models
 
         public Hospede(
             string Nome,
+            string NomeMae,
             string DataNascimento,
             string Cpf,
             string Senha,
@@ -32,6 +34,7 @@ namespace Models
         )
         {
             this.Nome = Nome;
+            this.NomeMae = NomeMae;
             this.DataNascimento = DataNascimento;
             this.Cpf = Cpf;
             this.Senha = Senha;
@@ -50,6 +53,7 @@ namespace Models
             return $"\n ---------------------------------------"
                 + $"\n ID: {this.Id}"
                 + $"\n Nome: {this.Nome}"
+                + $"\n Nome: {this.NomeMae}"
                 + $"\n Data de Nascimento: {this.DataNascimento}"
                 + $"\n Cpf: {this.Cpf}"
                 + $"\n Senha: {this.Senha}"
@@ -81,6 +85,7 @@ namespace Models
         public static void AlterarHospede(
             int Id,
             string Nome,
+            string NomeMae,
             string DataNascimento,
             string Cpf,
             string Senha,
@@ -92,6 +97,7 @@ namespace Models
         {
             Hospede hospede = GetHospede(Id);
             Hospede.Nome = Nome;
+            Hospede.NomeMae = NomeMae;
             Hospede.DataNascimento = DataNascimento;
             Hospede.Cpf = Cpf;
             Hospede.Senha = Senha;

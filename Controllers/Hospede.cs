@@ -8,6 +8,7 @@ namespace Controllers
     {
         public static Hospede IncluirHospede(
             string Nome,
+            string NomeMae,
             string DataNascimento,
             string Cpf,
             string Senha,
@@ -20,6 +21,11 @@ namespace Controllers
             if(String.IsNullOrEmpty(Nome))
             {
                 throw new Exception("Nome inválido");
+            }
+
+            if(String.IsNullOrEmpty(NomeMae))
+            {
+                throw new Exception("Nome da mãe inválido");
             }
 
             if(String.IsNullOrEmpty(DataNascimento))
@@ -57,12 +63,13 @@ namespace Controllers
                 throw new Exception("Forma de pagamento inválido");
             }   
 
-            return new Hospede(Nome, DataNascimento, Cpf, Senha, NrCartao, Cvv, DataValidade, FormaPagamento);
+            return new Hospede(Nome, NomeMae, DataNascimento, Cpf, Senha, NrCartao, Cvv, DataValidade, FormaPagamento);
         }
 
         public static Hospede AlterarHospede(
             int Id,
             string Nome,
+            string NomeMae,
             string DataNascimento,
             string Cpf,
             string Senha,
@@ -77,6 +84,11 @@ namespace Controllers
             if(!String.IsNullOrEmpty(Nome))
             {
                 Nome = Nome;
+            }
+
+            if(!String.IsNullOrEmpty(NomeMae))
+            {
+                NomeMae = NomeMae;
             }
 
             if(!String.IsNullOrEmpty(Data_nascimento))
@@ -104,7 +116,6 @@ namespace Controllers
                 Cvv = Cvv;
             }
 
-
             if(!String.IsNullOrEmpty(DataValidade))
             {
                 DataValidade = DataValidade;
@@ -115,7 +126,7 @@ namespace Controllers
                 FormaPagamento = FormaPagamento;
             }
 
-            Hospede.AlterarHospede(Id, Nome, DataNascimento, Cpf, Senha, NrCartao, Cvv, DataValidade, FormaPagamento);
+            Hospede.AlterarHospede(Id, Nome, NomeMae, DataNascimento, Cpf, Senha, NrCartao, Cvv, DataValidade, FormaPagamento);
             
             return hospede;
         }
@@ -154,6 +165,7 @@ namespace Controllers
 
         public static void Auth(
             string Nome,
+            string NomeMae,
             string DataNascimento,
             string Cpf,
             string Senha,
@@ -163,7 +175,7 @@ namespace Controllers
             string FormaPagamento
         )
         {
-            Hospede.Auth(Nome, DataNascimento, Cpf, Senha, NrCartao, Cvv, DataValidade, FormaPagamento);
+            Hospede.Auth(Nome, NomeMae, DataNascimento, Cpf, Senha, NrCartao, Cvv, DataValidade, FormaPagamento);
         }
     }
 }
