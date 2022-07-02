@@ -14,7 +14,6 @@ namespace Models
     public int Id { get; set; }
     public int NumeroQuarto { get; set; }
     public int Andar { get; set; }
-    public Quarto Quarto { get; set; }
     public string Descricao { get; set; }
     public string Reservado { get; set; }
     public double Valor { get; set; }

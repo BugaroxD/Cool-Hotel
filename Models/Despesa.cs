@@ -1,32 +1,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using Repository;
+using System;
+
 
 namespace Models
 {
-  public class Depesa
+  public class Despesa
   {
     public int Id { get; set; }
     public int ReservaId { get; set; }
     public Reserva Reserva { get; set; }
     public int ProdutoId { get; set; }
     public Produto Produto { get; set; }
+    public int Qnt_Consumida { get; set; }
 
 
-    public Depesa() { }
+    public Despesa() { }
 
-    public Depesa(
+    public Despesa(
         int ReservaId,
         int ProdutoId,
-        int QntConsumida
+        int Qnt_Consumida
     )
     {
       this.ReservaId = ReservaId;
       this.ProdutoId = ProdutoId;
-      this.QntConsumida = QntConsumida;
+      this.Qnt_Consumida = Qnt_Consumida;
 
       Context db = new Context();
-      db.Depesas.Add(this);
+      db.Despesas.Add(this);
       db.SaveChanges();
     }
 
@@ -35,8 +38,8 @@ namespace Models
       return $"\n *"
           + $"\n ID: {this.Id}"
           + $"\n ReservaId: {this.ReservaId}"
-          + $"\n ProdutoId: {this.ProdutoId}";
-      +$"\n Quantidade Consumida: {this.QntConsumida}";
+          + $"\n ProdutoId: {this.ProdutoId}"
+      + $"\n Quantidade Consumida: {this.Qnt_Consumida}";
     }
 
     public override bool Equals(object obj)
@@ -45,11 +48,11 @@ namespace Models
       {
         return false;
       }
-      if (!Depesa.ReferenceEquals(this, obj))
+      if (!Despesa.ReferenceEquals(this, obj))
       {
         return false;
       }
-      Depesa it = (Depesa)obj;
+      Despesa it = (Despesa)obj;
       return it.Id == this.Id;
     }
 
@@ -58,12 +61,12 @@ namespace Models
       return base.GetHashCode();
     }
 
-    public static IEnumerable<Depesa> GetDepesas()
+    public static IEnumerable<Despesa> GetDespesas()
     {
       try
       {
         Context db = new Context();
-        return (from Depesa in db.Depesas select Depesa);
+        return (from Despesa in db.Despesas select Despesa);
       }
       catch
       {
@@ -71,41 +74,41 @@ namespace Models
       }
     }
 
-    public static Depesa GetDepesa(
+    public static Despesa GetDespesa(
         int ReservaId,
         int ProdutoId
     )
     {
       Context db = new Context();
-      IEnumerable<Depesa> Depesas = from Depesa in db.Depesas
-                                    where Depesa.ReservaId == ReservaId && Depesa.ProdutoId == ProdutoId
-                                    select Depesa;
+      IEnumerable<Despesa> Despesas = from Despesa in db.Despesas
+                                      where Despesa.ReservaId == ReservaId && Despesa.ProdutoId == ProdutoId
+                                      select Despesa;
 
-      return depesas.First();
+      return Despesas.First();
     }
 
-    public static Depesa GetById(int Id)
+    public static Despesa GetById(int Id)
     {
       Context db = new Context();
-      IEnumerable<Depesa> Depesas = from Depesa in db.Depesas
-                                    where Depesa.Id == Id
-                                    select Depesa;
+      IEnumerable<Despesa> Despesas = from Despesa in db.Despesas
+                                      where Despesa.Id == Id
+                                      select Despesa;
 
-      return Depesas.First();
+      return Despesas.First();
     }
 
-    public static IEnumerable<Depesa> GetByReservaId(int ReservaId)
+    public static IEnumerable<Despesa> GetByReservaId(int ReservaId)
     {
       Context db = new Context();
-      return (from Depesa in db.Depesas
-              where Depesa.ReservaId == ReservaId
-              select Depesa);
+      return (from Despesa in db.Despesas
+              where Despesa.ReservaId == ReservaId
+              select Despesa);
     }
 
-    public static void RemoverDepesa(Depesa Produto)
+    public static void RemoverDespesa(Despesa Produto)
     {
       Context db = new Context();
-      db.Depesas.Remove(Produto);
+      db.Despesas.Remove(Produto);
       db.SaveChanges();
     }
   }

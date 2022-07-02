@@ -1,15 +1,24 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using System.Windows.Forms;
+using Views;
+//using Controllers;
 
-namespace ProjetoHotel
+namespace EncryptMe
 {
-    public class Program
+  public class Program
+  {
+    public static void Main(string[] args)
     {
+
+      try
+      {
+        Application.EnableVisualStyles();
+        Application.Run(new LoginForm());
+      }
+      catch (Exception err)
+      {
+        MessageBox.Show(err.Message);
+      }
     }
+  }
 }
