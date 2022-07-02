@@ -15,6 +15,7 @@ namespace Repository
         // public DbSet<Tag> Tags { get; set; }
 
         public DbSet<Colaboradores> Colaboradores { get; set;}
+        public DbSet<Reservas> Reservas { get; set; }
         // Heroku Config
         //"Server=us-cdbr-east-05.cleardb.net;User Id=b4a4154b57bdb4;Database=heroku_96f4f1c4546dac0;Pwd=b857f5e2"
 

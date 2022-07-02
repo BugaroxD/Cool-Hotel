@@ -4,7 +4,7 @@ using Repository;
 
 namespace Models
 {
-    public class Depesa
+    public class Despesa
     {
         public int Id { get; set; }
         public int ReservaId { get; set; }
@@ -17,13 +17,13 @@ namespace Models
 
         public Depesa(
             int ReservaId,
-            int ProdutoId
+            int ProdutoId,
             int QntConsumida
         )
         {
             this.ReservaId = ReservaId;
             this.ProdutoId = ProdutoId;
-            this.QntConsumida = QntConsumida
+            this.QntConsumida = QntConsumida;
 
             Context db = new Context();
             db.Depesas.Add(this);
@@ -60,10 +60,11 @@ namespace Models
 
         public static IEnumerable<Depesa> GetDepesas()
         {
-          try
-          {
-            Context db = new Context();
-            return (from Depesa in db.Depesas select Depesa);
+            try
+            {
+                Context db = new Context();
+                return (from Depesa in db.Depesas select Depesa);
+            }
             catch
             {
                 throw new System.Exception("Sem conexão com o banco!");
