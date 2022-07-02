@@ -10,7 +10,7 @@ namespace Repository
 
     public DbSet<Colaborador> Colaboradores { get; set; }
     
-    //public DbSet<Reserva> Reservas { get; set; }
+    public DbSet<Reserva> Reservas { get; set; }
 
     public DbSet<Produto> Produtoss { get; set; }
 
