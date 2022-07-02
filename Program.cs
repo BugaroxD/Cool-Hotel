@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Views;
 //using Controllers;
 
-namespace EncryptMe
+namespace Views
 {
   public class Program
   {
